@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  nav
+    a(href="/vegetables/new")= "Create New Vegetable"
+  h1 vegetables Index Page
+  p Welcome to #{title}
+
+  ul
+    each item, index in veggies
+      if item.readyToEat
+        - var ready = "ready to eat!"
+      else
+        - var ready = "not ready to eat!"
+      li(key=index)
+        <a href="/vegetables/#{item._id}">#{item.name}</a> is #{item.color} and #{ready}
+
+        
+
+  

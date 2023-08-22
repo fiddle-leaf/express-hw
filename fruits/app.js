@@ -1,7 +1,11 @@
+/**
+ * 
+ */
+
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const fruits = require("./routes/fruits");
+const Veggie = require("./routes/Veggie");
 const mongoose = require("mongoose");
 const Fruit = require("./routes/Fruit");
 
@@ -28,14 +32,27 @@ app.get("/fruits", (req, res) => {
   Fruit.find({})
     .then((allFruits) => {
       console.log(allFruits);
-      res.render("index", { title: "Fruits", fruits: allFruits });
+      res.render("fruit", { title: "Fruits", fruits: allFruits });
+    })
+    .catch((error) => console.error(error));
+});
+
+app.get("/vegetables", (req, res) => {
+  Veggie.find({})
+    .then((allVeggies) => {
+      console.log(allVeggies);
+      res.render("veg", { title: "Vegetables", veggies: allVeggies });
     })
     .catch((error) => console.error(error));
 });
 
 //new
 app.get("/fruits/new", (req, res) => {
-  res.render("new");
+  res.render("new_fruit");
+});
+
+app.get("/vegetables/new", (req, res) => {
+  res.render("new_veg");
 });
 
 //delete
@@ -58,13 +75,41 @@ app.post("/fruits", (req, res) => {
     });
 });
 
+app.post("/vegetables", (req, res) => {
+  if (req.body.readyToEat === "on") {
+    req.body.readyToEat = true;
+  } else {
+    req.body.readyToEat = false;
+  }
+
+  Veggie.create(req.body)
+    .then((createdVeggie) => {
+      res.redirect("/vegetables");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
 //edit
 //show
 app.get("/fruits/:id", (req, res) => {
   Fruit.findOne({ _id: req.params.id })
     .then((foundFruit) => {
-      res.render("show", {
+      res.render("show_fruit", {
         fruit: foundFruit,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
+app.get("/vegetables/:id", (req, res) => {
+  Veggie.findOne({ _id: req.params.id })
+    .then((foundVeggie) => {
+      res.render("show_veg", {
+        veggie: foundVeggie,
       });
     })
     .catch((error) => {

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    h2 New Vegetable Page
+    form(
+        action="/vegetables"
+        method="POST"
+    )
+        div
+            label Name:
+            input(
+                type="text"
+                name="name"
+            )
+        div
+            label Color: 
+            input(
+                type="text"
+                name="color"
+            )
+        div
+            label Is Ready to Eat?
+            input(
+                type="checkbox"
+                name="readyToEat"
+            )
+        input(
+            type="submit"
+            value="Create Veggie"
+        )
+
+
+
