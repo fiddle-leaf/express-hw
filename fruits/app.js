@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-//const fruits = require("./routes/fruits");
+const fruits = require("./routes/fruits");
 const mongoose = require("mongoose");
 const Fruit = require("./routes/Fruit");
 
@@ -35,7 +35,7 @@ app.get("/fruits", (req, res) => {
 
 //new
 app.get("/fruits/new", (req, res) => {
-  res.render("New");
+  res.render("new");
 });
 
 //delete
@@ -61,15 +61,15 @@ app.post("/fruits", (req, res) => {
 //edit
 //show
 app.get("/fruits/:id", (req, res) => {
-  Fruit.findOne(
-    { _id: req.params.id }.then((foundFruit) => {
-      res
-        .render("Show", {
-          fruit: foundFruit,
-        })
-        .catch((error) => console.log(error));
+  Fruit.findOne({ _id: req.params.id })
+    .then((foundFruit) => {
+      res.render("show", {
+        fruit: foundFruit,
+      });
     })
-  );
+    .catch((error) => {
+      console.error(error);
+    });
 });
 
 app.listen(3004, () => {
