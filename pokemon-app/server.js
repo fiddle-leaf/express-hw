@@ -23,7 +23,8 @@ app.get("/pokemon", (req, res) => {
 
 // show
 app.get("/pokemon/:id", (req, res) => {
-  res.send(req.params.id);
+  console.log(pokemon);
+  res.render("show", { pokemons: pokemon, id: req.params.id });
 });
 
 // listening to port
