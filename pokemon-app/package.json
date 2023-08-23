@@ -9,5 +9,15 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsx-view-engine": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-jsx-css-modules": "^1.0.0",
+    "babel-plugin-transform-react-pug": "^7.0.1"
+  }
 }
