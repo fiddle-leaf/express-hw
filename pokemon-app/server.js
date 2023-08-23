@@ -4,6 +4,9 @@ const app = express();
 const port = 3000;
 const pokemon = require("./models/pokemon");
 
+//set pug as view engine
+app.set("view engine", "pug");
+
 // INDUCES
 //index
 app.get("/", (req, res) => {
@@ -11,7 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pokemon", (req, res) => {
-  res.send(pokemon);
+  res.render("Index", { title: "Pokemon", message: "See all Pokemon!" });
 });
 
 // show
