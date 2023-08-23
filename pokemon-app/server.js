@@ -23,7 +23,7 @@ app.get("/pokemon", (req, res) => {
 
 // show
 app.get("/pokemon/:id", (req, res) => {
-  console.log(pokemon);
+  //console.log(pokemon);
   res.render("show", { pokemons: pokemon, id: req.params.id });
 });
 
