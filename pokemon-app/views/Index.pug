@@ -5,4 +5,6 @@ html
     h1= message
 
     block content 
-        div(style={color: '#fff', background: '#000'})  My first Block component 
+        ul.pokemon
+            each pokemon in pokemons 
+                include pokemon.pug
