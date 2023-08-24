@@ -1,11 +1,5 @@
-extends layout
-
-block content
-    h2 New Fruit Page
-    form(
-        action="/fruits"
-        method="POST"
-    )
+mixin form(button_name, target)
+    form(action=route method="POST")
         div
             label Name:
             input(
@@ -26,8 +20,5 @@ block content
             )
         input(
             type="submit"
-            value="Create Fruit"
+            value=`${button_name}`
         )
-
-
-

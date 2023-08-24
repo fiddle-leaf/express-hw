@@ -1,0 +1,7 @@
+mixin list(item, index, target)
+    if item.readyToEat
+        - var ready = "ready to eat!"
+    else
+        - var ready = "not ready to eat!"
+    li(key=index)
+        <a href="#{target}/#{item._id}">#{item.name}</a> is #{item.color} and #{ready}

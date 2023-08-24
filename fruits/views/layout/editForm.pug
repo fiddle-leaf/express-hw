@@ -1,0 +1,33 @@
+mixin form(item, button_name, target)
+    form(action=route method="POST")
+        div
+            label Name:
+            input(
+                type="text"
+                name="name"
+                value=`${item.name}`
+            )
+        div
+            label Color: 
+            input(
+                type="text"
+                name="color"
+                value=`${item.color}`
+            )
+        div
+            label Is Ready to Eat?
+            if item.readyToEat
+                input(
+                    type="checkbox"
+                    name="readyToEat"
+                    checked
+                )
+            else 
+                input(
+                    type="checkbox"
+                    name="readyToEat"
+            )
+        input(
+            type="submit"
+            value=`${button_name}`
+        )

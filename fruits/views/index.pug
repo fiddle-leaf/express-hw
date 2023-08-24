@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  nav
+    a(href=`${target}/new`) Create New #{title}
+  h1 #{title} Index Page
+  p Welcome to #{title}
+
+  ul
+    include layout/list
+    each item, index in items
+      +list(item, index, target)
+
+        
+
+  

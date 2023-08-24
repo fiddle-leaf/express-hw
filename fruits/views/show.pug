@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    h2 Fruits Show Page
-    h3= fruit.name 
-    if fruit.readyToEat 
+    h2 #{title} Show Page
+    h3= item.name 
+    if item.readyToEat 
         - var ready = "it's ready to eat!"
     else 
         - var ready = "it is not ready to eat."
     p.
-        The #{fruit.name} is #[em #{fruit.color}], and #{ready}
+        The #{item.name} is #[em #{item.color}], and #{ready}
 
     

@@ -1,0 +1,7 @@
+extends layout 
+
+block content 
+    h2 #{name} Edit Page
+    include layout/editForm
+    +form(item, `Edit ${name}`, `${target}/${item._id}?_method=PUT`)
+         
