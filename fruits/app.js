@@ -29,7 +29,9 @@ mongoose.connection.once("open", () => {
  * INDUCES
  */
 
-//index
+/**
+ * index
+ * */
 app.get("/fruits", (req, res) => {
   Fruit.find({})
     .then((allFruits) => {
@@ -56,7 +58,9 @@ app.get("/vegetables", (req, res) => {
     .catch((error) => console.error(error));
 });
 
-//new
+/**
+ * new
+ * */
 app.get("/fruits/new", (req, res) => {
   res.render("new", {
     title: "New Fruits!",
@@ -73,7 +77,9 @@ app.get("/vegetables/new", (req, res) => {
   });
 });
 
-//delete
+/**
+ * delete
+ * */
 app.delete("/vegetables/:id", (req, res) => {
   Veggie.deleteOne({ _id: req.params.id })
     .then((info) => {
@@ -82,8 +88,11 @@ app.delete("/vegetables/:id", (req, res) => {
     })
     .catch((error) => console.log(error));
 });
-//update
-app.put("/veggies/:id", (req, res) => {
+
+/**
+ * update
+ * */
+app.put("/vegetables/:id", (req, res) => {
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
   } else {
@@ -96,7 +105,65 @@ app.put("/veggies/:id", (req, res) => {
   });
 });
 
-//create
+app.put("/fruits/:id", (req, res) => {
+  if (req.body.readyToEat === "on") {
+    req.body.readyToEat = true;
+  } else {
+    req.body.readyToEat = false;
+  }
+
+  Fruit.updateOne({ _id: req.params.id }, req.body).then((info) => {
+    console.log(info);
+    res.redirect(`/fruits/${req.params.id}`);
+  });
+});
+
+/**
+ * create
+ * */
+//  *   *   * SEED  *   *   *
+app.get("/fruits/seed", (req, res) => {
+  Fruit.insertMany([
+    {
+      name: "grapefruit",
+      color: "pink",
+      readyToEat: true,
+    },
+    {
+      name: "grape",
+      color: "purple",
+      readyToEat: false,
+    },
+    {
+      name: "avocado",
+      color: "green",
+      readyToEat: true,
+    },
+  ]);
+});
+
+app.get("/vegetables/seed", (req, res) => {
+  Fruit.insertMany([
+    {
+      name: "cucumber",
+      color: "green",
+      readyToEat: false,
+    },
+    {
+      name: "spaghetti squash",
+      color: "yellow",
+      readyToEat: true,
+    },
+    {
+      name: "eggplant",
+      color: "purple",
+      readyToEat: false,
+    },
+  ]);
+});
+
+//  *   *   * MONGODB *   *   *
+
 app.post("/fruits", (req, res) => {
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
@@ -129,7 +196,9 @@ app.post("/vegetables", (req, res) => {
     });
 });
 
-//edit
+/**
+ * edit
+ * */
 app.get("/fruits/:id/edit", (req, res) => {
   Fruit.findOne({ _id: req.params.id })
     .then((foundFruit) => {
@@ -155,7 +224,10 @@ app.get("/vegetables/:id/edit", (req, res) => {
     })
     .catch((error) => console.log(error));
 });
-//show
+
+/**
+ * show
+ * */
 app.get("/fruits/:id", (req, res) => {
   Fruit.findOne({ _id: req.params.id })
     .then((foundFruit) => {

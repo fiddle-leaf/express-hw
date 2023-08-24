@@ -1,5 +1,5 @@
 mixin form(item, button_name, target)
-    form(action=route method="POST")
+    form(action=target method="POST")
         div
             label Name:
             input(
