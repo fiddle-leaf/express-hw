@@ -1,10 +1,10 @@
 html
   head
-    title= title
+    title Pokemons
   body
-    h1= message
-
     block content 
-        ul.pokemon
-            each pokemon,index in pokemons
-                include pokemon.pug
+      h1 See all Pokemon!
+      a(href="/pokemons/new") Create new Pokemon
+      ul.pokemon
+          each pokemon,index in pokemons
+            include pokemon.pug

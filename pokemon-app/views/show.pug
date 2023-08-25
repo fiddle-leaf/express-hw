@@ -1,10 +1,9 @@
-extend index 
+extends index 
 
 block content
     h1 Gotta Catch 'Em All
-    each pokemon, index in pokemons 
-        unless index != id
-            h2(style="text-transform: capitalize")= pokemon.name
-            figure 
-                img(src=pokemon.img+'.jpg')
-    a(href="/pokemon") Back
+    
+    h2(style="text-transform: capitalize")= pokemon.name
+    figure 
+        img(src=pokemon.img+'.jpg')
+    a(href="/pokemons") Back

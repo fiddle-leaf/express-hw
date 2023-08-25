@@ -1,0 +1,19 @@
+extends index 
+
+block content 
+    h1 Create new Pokemon 
+    form(action="/pokemons" method="POST")
+        div
+            label(for="name")  Pokemon Name
+            br
+            input(type="text" name="name") 
+        div 
+            label(for="image").
+                Pokemon Image URL (without extension, i.e #[em .png, .jpg, .tiff])
+            br
+            input(type="text" name="img")
+            br
+            span.
+                Images can be found at #[a(href="https://pokemondb.net/") PokemonDB]
+        div
+            input(type="submit" value="Create Pokemon")
