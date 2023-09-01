@@ -5,3 +5,5 @@ mixin list(item, index, target)
         - var ready = "not ready to eat!"
     li(key=index)
         <a href="#{target}/#{item._id}">#{item.name}</a> is #{item.color} and #{ready}
+        a(href=`${target}/${item._id}/edit`) Edit
+        form 
