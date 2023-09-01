@@ -7,7 +7,7 @@ const express = require("express"); // import express
 const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const path = require("path"); // built in node module we use to resolve paths more on this when we use it
-const Flight = require("./models/Flight");
+const Log = require("./models/Log");
 
 /**     *       *       *       *       *       *       *      **
  *  *       *   Create Express Application Object    *       *  *
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
   res.send("your server is running... better catch it!");
 });
 
-app.use("/flights", require("./controllers/flights"));
+app.use("/logs", require("./controllers/logs"));
 
 /**     *       *       *       *       *       *      *    **
  *  *       *       *    Server Listener    *       *        *
